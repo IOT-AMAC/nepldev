@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <title>NIV-DAS</title>
+        {% load static %}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="Nihaar Intelligent - Data Acquisition System" name="description" />
+        <meta content="NEPL" name="author" />
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="{% static 'images/nepl-logo.png' %}">
+
+        <!-- preloader css -->
+        <link rel="stylesheet" href="{% static 'css/preloader.min.css' %}" type="text/css" />
+
+        <!-- Bootstrap Css -->
+        <link href="{% static 'css/bootstrap.min.css' %}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+        <!-- Icons Css -->
+        <link href="{% static 'css/icons.min.css' %}" rel="stylesheet" type="text/css" />
+        <!-- App Css-->
+        <link href="{% static 'css/app.min.css' %}" id="app-style" rel="stylesheet" type="text/css" />
+
+    </head>
+
+    <body data-topbar="dark">
+        <div id="layout-wrapper">
+
+            <header id="page-topbar">
+                <div class="navbar-header">
+                    <div class="d-flex">
+                        <div class="navbar-brand-box">
+                            <a href="home" class="logo logo-dark">
+                                <span class="logo-sm">
+                                    <img src="{% static 'images/nepl-logo.png' %}" alt="" height="30">
+                                </span>
+                                <span class="logo-lg">
+                                    <img src="{% static 'images/nepl-logo.png' %}" alt="" height="24"> <span class="logo-txt">NIV-DAS</span>
+                                </span>
+                            </a>
+
+                            <a href="home" class="logo logo-light">
+                                <span class="logo-sm">
+                                    <img src="{% static 'images/nepl-logo.png' %}" alt="" height="30">
+                                </span>
+                                <span class="logo-lg">
+                                    <img src="{% static 'images/nepl-logo.png' %}" alt="" height="24"> <span class="logo-txt">NIV-DAS</span>
+                                </span>
+                            </a>
+                        </div>
+                        <button type="button" class="btn btn-sm px-3 font-size-16 header-item" id="vertical-menu-btn">
+							<i class="fa fa-fw fa-bars"></i>
+						</button>
+
+                    </div>
+
+
+                    <div class="d-flex">
+                        <div class="dropdown d-inline-block">
+                            <button type="button" class="btn header-item bg-soft-light border-start border-end" id="page-header-user-dropdown"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="d-none d-xl-inline-block ml-1 fw-medium">{{user.username}}</span>
+                                <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" href="/"><i class="mdi mdi-logout font-size-16 align-middle me-1"></i> Logout</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </header>
+
+            <div class="vertical-menu">
+                <div data-simplebar class="h-100">
+                    <div id="sidebar-menu">
+                        <ul class="metismenu list-unstyled" id="side-menu">
+
+                            {% for item in all %}
+                                {% if item.u_name == user.username %}
+                                    {% if item.group_name == "Admin" %}
+                                        <!-- Admin -->
+                                        <li>
+                                            <a href="javascript: void(0);" class="has-arrow">
+                                                <span>Admin</span>
+                                            </a>
+                                            <ul class="sub-menu" aria-expanded="false">
+                                                <li><a href="register" data-key="t-products">User Management</a></li>
+                                                <li><a href="group_security" data-key="t-product-detail">Group Security</a></li>
+                                                <li><a href="user_security" data-key="t-orders">User Security</a></li>
+                                                <li><a href="#" data-key="t-customers">Database Settings</a></li>
+                                                <li><a href="#" data-key="t-cart">SMS Settings</a></li>
+                                                <li><a href="#" data-key="t-checkout">Master Password Settings</a></li>
+                                            </ul>
+                                        </li>
+                                        <!-- Master Settings -->
+                                        <li>
+                                            <a href="javascript: void(0);" class="has-arrow">
+                                                <span data-key="t-ecommerce">Master Settings</span>
+                                            </a>
+                                            <ul class="sub-menu" aria-expanded="false">
+                                            <li><a href="create_equipment" data-key="t-products">Equipment Creation</a></li>
+                                            <li><a href="eqp_parameter" data-key="t-product-detail">Equipment Parameter</a></li>
+                                            <li><a href="eqp_activation" data-key="t-orders">Equipment Activation</a></li>
+                                            <li><a href="#" data-key="t-customers">Template</a></li>
+                                            <li><a href="#" data-key="t-cart">Mobile Number</a></li>
+                                            <li><a href="#" data-key="t-checkout">Master Template</a></li>
+                                            <li><a href="#" data-key="t-shops">Synchronize Date Time</a></li>
+                                            <li><a href="#" data-key="t-add-product">Reset Lux UV</a></li>
+                                            <li><a href="#" data-key="t-add-product">Input Output Status</a></li>
+                                            </ul>
+                                        </li>
+                                        <!-- Supervise -->
+                                        <li>
+                                            <a href="javascript: void(0);" class="has-arrow">
+                                                <span data-key="t-ecommerce">Supervise</span>
+                                            </a>
+                                            <ul class="sub-menu" aria-expanded="false">
+                                                <li><a href="#" data-key="t-products">Equipment List</a></li>
+                                                <li><a href="#" data-key="t-product-detail">Dat View</a></li>
+                                                <li><a href="#" data-key="t-orders">Lux Data View</a></li>
+                                            </ul>
+                                        </li>
+                                        <!-- History -->
+                                        <li>
+                                            <a href="javascript: void(0);" class="has-arrow">
+                                                <span data-key="t-ecommerce">History</span>
+                                            </a>
+                                            <ul class="sub-menu" aria-expanded="false">
+                                                <li><a href="his_rep" data-key="t-products">Data Report/Graph</a></li>
+                                                <li><a href="#" data-key="t-product-detail">Lux UV Data View</a></li>
+                                                <li><a href="#" data-key="t-orders">Lux Data View</a></li>
+                                            </ul>
+                                        </li>
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-bar">
+            <div data-simplebar class="h-100">
+                <div class="rightbar-title d-flex align-items-center bg-dark p-3">
+
+                    <h5 class="m-0 me-2 text-white">Theme Customizer</h5>
+
+                    <a href="javascript:void(0);" class="right-bar-toggle ms-auto">
+                        <i class="mdi mdi-close noti-icon"></i>
+                    </a>
+                </div>
+
+                <!-- Settings -->
+
+
+                <div class="p-4">
+                    <h6 class="mb-3">Layout</h6>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout"
+                            id="layout-vertical" value="vertical">
+                        <label class="form-check-label" for="layout-vertical">Vertical</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout"
+                            id="layout-horizontal" value="horizontal">
+                        <label class="form-check-label" for="layout-horizontal">Horizontal</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3 pt-2">Layout Mode</h6>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-mode"
+                            id="layout-mode-light" value="light">
+                        <label class="form-check-label" for="layout-mode-light">Light</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-mode"
+                            id="layout-mode-dark" value="dark">
+                        <label class="form-check-label" for="layout-mode-dark">Dark</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3 pt-2">Layout Width</h6>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-width"
+                            id="layout-width-fuild" value="fuild" onchange="document.body.setAttribute('data-layout-size', 'fluid')">
+                        <label class="form-check-label" for="layout-width-fuild">Fluid</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3 pt-2">Layout Position</h6>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-position"
+                            id="layout-position-fixed" value="fixed" onchange="document.body.setAttribute('data-layout-scrollable', 'false')">
+                        <label class="form-check-label" for="layout-position-fixed">Fixed</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-position"
+                            id="layout-position-scrollable" value="scrollable" onchange="document.body.setAttribute('data-layout-scrollable', 'true')">
+                        <label class="form-check-label" for="layout-position-scrollable">Scrollable</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3 pt-2">Topbar Color</h6>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="topbar-color"
+                            id="topbar-color-light" value="light" onchange="document.body.setAttribute('data-topbar', 'light')">
+                        <label class="form-check-label" for="topbar-color-light">Light</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="topbar-color"
+                            id="topbar-color-dark" value="dark" onchange="document.body.setAttribute('data-topbar', 'dark')">
+                        <label class="form-check-label" for="topbar-color-dark">Dark</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3 pt-2 sidebar-setting">Sidebar Size</h6>
+
+                    <div class="form-check sidebar-setting">
+                        <input class="form-check-input" type="radio" name="sidebar-size"
+                            id="sidebar-size-default" value="default" onchange="document.body.setAttribute('data-sidebar-size', 'lg')">
+                        <label class="form-check-label" for="sidebar-size-default">Default</label>
+                    </div>
+                    <div class="form-check sidebar-setting">
+                        <input class="form-check-input" type="radio" name="sidebar-size"
+                            id="sidebar-size-compact" value="compact" onchange="document.body.setAttribute('data-sidebar-size', 'md')">
+                        <label class="form-check-label" for="sidebar-size-compact">Compact</label>
+                    </div>
+                    <div class="form-check sidebar-setting">
+                        <input class="form-check-input" type="radio" name="sidebar-size"
+                            id="sidebar-size-small" value="small" onchange="document.body.setAttribute('data-sidebar-size', 'sm')">
+                        <label class="form-check-label" for="sidebar-size-small">Small (Icon View)</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3 pt-2 sidebar-setting">Sidebar Color</h6>
+
+                    <div class="form-check sidebar-setting">
+                        <input class="form-check-input" type="radio" name="sidebar-color"
+                            id="sidebar-color-light" value="light" onchange="document.body.setAttribute('data-sidebar', 'light')">
+                        <label class="form-check-label" for="sidebar-color-light">Light</label>
+                    </div>
+                    <div class="form-check sidebar-setting">
+                        <input class="form-check-input" type="radio" name="sidebar-color"
+                            id="sidebar-color-dark" value="dark" onchange="document.body.setAttribute('data-sidebar', 'dark')">
+                        <label class="form-check-label" for="sidebar-color-dark">Dark</label>
+                    </div>
+                    <div class="form-check sidebar-setting">
+                        <input class="form-check-input" type="radio" name="sidebar-color"
+                            id="sidebar-color-brand" value="brand" onchange="document.body.setAttribute('data-sidebar', 'brand')">
+                        <label class="form-check-label" for="sidebar-color-brand">Brand</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3 pt-2">Direction</h6>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-direction"
+                            id="layout-direction-ltr" value="ltr">
+                        <label class="form-check-label" for="layout-direction-ltr">LTR</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-direction"
+                            id="layout-direction-rtl" value="rtl">
+                        <label class="form-check-label" for="layout-direction-rtl">RTL</label>
+                    </div>
+
+                </div>
+
+            </div> <!-- end slimscroll-menu-->
+        </div>
+
+        {% block content %}
+        {% endblock%}
+
+
+
+
+        <!-- JAVASCRIPT -->
+        <script src="{%static 'libs/jquery/jquery.min.js' %}"></script>
+        <script src="{%static 'libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{%static 'libs/metismenu/metisMenu.min.js' %}"></script>
+        <script src="{%static 'libs/simplebar/simplebar.min.js' %}"></script>
+        <script src="{%static 'libs/node-waves/waves.min.js' %}"></script>
+        <script src="{%static 'libs/feather-icons/feather.min.j' %}s"></script>
+        <!-- pace js -->
+        <script src="{%static 'libs/pace-js/pace.min.js' %}"></script>
+
+        <!-- apexcharts -->
+        <script src="{%static 'libs/apexcharts/apexcharts.min.js' %}"></script>
+
+        <!-- Plugins js-->
+        <script src="{%static 'libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js' %}"></script>
+        <script src="{%static 'libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js' %}"></script>
+        <!-- dashboard init
+        <script src="{%static 'js/pages/dashboard.init.js' %}"></script>
+        -->
+        <!-- Table Editable plugin -->
+         <script src="{%static 'libs/table-edits/build/table-edits.min.js' %}"></script>
+        <script src="{%static 'js/pages/table-editable.int.js' %}"></script>
+
+        <script src="{%static 'js/app.js' %}"></script>
+    </body>
+
+</html>
+

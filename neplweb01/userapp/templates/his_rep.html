@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="main-content">
+    <div class="page-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-editable table-nowrap align-middle table-edits">
+                                    <thead>
+                                        <tr>
+                                            <th>Equipment Name</th>
+                                            <th>Equipment IP</th>
+                                            <th>Actual Temp</th>
+                                            <th>Current Temp</th>
+                                            <th>Set Temp</th>
+                                            <th>Connection Status</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        {% for item in allelist %}
+                                            <tr>
+                                                    <td>{{item.eqp_name}}</td>
+                                                    <td>{{item.ip_addr}}</td>
+                                                    <td>{{item.actual_temp}}</td>
+                                                    <td>{{item.present_temp}}</td>
+                                                    <td>{{item.set_val}}</td>
+                                                    <td>{{item.conn_status}}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

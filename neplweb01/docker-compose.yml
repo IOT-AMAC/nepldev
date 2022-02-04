@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+  db:
+    image: mysql:5.7.22
+    restart: always
+    ports:
+      - '33066:3386'
+    environment:
+      MYSQL_DATABASE: 'nepldb02'
+      MYSQL_USER: 'root'
+      MYSQL_PASSWORD: '251294'
+      MYSQL_ROOT_PASSWORD: '251294'
+
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db

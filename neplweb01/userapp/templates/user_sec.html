@@ -1,0 +1,321 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="main-content">
+    <div class="page-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="border rounded p-4">
+                        <div class="form-check font-size-16">
+                            <input class="form-check-input" type="checkbox" value="" id="checkAdmin">
+                            <label class="form-check-label" for="checkAdmin">
+                                Admin Page
+                            </label>
+                        </div>
+                        <br>
+                        <div class="card task-box">
+                            <div class="card-body">
+                                <div class="form-check font-size-16">
+                                    <input class="form-check-input" type="checkbox" value="" id="admincheck01">
+                                    <label class="form-check-label" for="admincheck01">
+                                        User Creation
+                                    </label>
+                                    {% if "checkAdmin" == "checked" %}
+                                        "admincheck01" = "checked"
+                                    {% endif%}
+                                </div>
+                                <br>
+                                <div class="form-check font-size-16">
+                                    <input class="form-check-input" type="checkbox" value="" id="admincheck02">
+                                    <label class="form-check-label" for="admincheck02">
+                                        Group Security
+                                    </label>
+                                </div>
+                                <br>
+                                <div class="form-check font-size-16">
+                                    <input class="form-check-input" type="checkbox" value="" id="admincheck03">
+                                    <label class="form-check-label" for="admincheck03">
+                                        User Security
+                                    </label>
+                                </div>
+                                <br>
+                                <div class="form-check font-size-16">
+                                    <input class="form-check-input" type="checkbox" value="" id="admincheck04">
+                                    <label class="form-check-label" for="admincheck04">
+                                        Database Settings
+                                    </label>
+                                </div>
+                                <br>
+                                <div class="form-check font-size-16">
+                                    <input class="form-check-input" type="checkbox" value="" id="admincheck05">
+                                    <label class="form-check-label" for="admincheck05">
+                                        SMS Settings
+                                    </label>
+                                </div>
+                                <br>
+                                <div class="form-check font-size-16">
+                                    <input class="form-check-input" type="checkbox" value="" id="admincheck06">
+                                    <label class="form-check-label" for="admincheck06">
+                                        Master Password Settings
+                                    </label>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="border rounded p-4">
+                        <div class="form-check font-size-16">
+                            <input class="form-check-input" type="checkbox" value="" id="checksupervise">
+                            <label class="form-check-label" for="checksupervise">
+                                Supervise Page
+                            </label>
+                        </div>
+                        <br>
+                        <div class="card task-box">
+                            <div class="card-body">
+                                <div class="form-check font-size-16">
+                                    <input class="form-check-input" type="checkbox" value="" id="admincheck01">
+                                    <label class="form-check-label" for="admincheck01">
+                                        Equipment List
+                                    </label>
+                                </div>
+                                <br>
+                                <div class="form-check font-size-16">
+                                    <input class="form-check-input" type="checkbox" value="" id="admincheck02">
+                                    <label class="form-check-label" for="admincheck02">
+                                        Data View
+                                    </label>
+                                </div>
+                                <br>
+                                <div class="form-check font-size-16">
+                                    <input class="form-check-input" type="checkbox" value="" id="admincheck03">
+                                    <label class="form-check-label" for="admincheck03">
+                                        Lux UV Data View
+                                    </label>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="border rounded p-4">
+                        <div class="form-check font-size-16">
+                            <input class="form-check-input" type="checkbox" value="" id="checkadmin">
+                            <label class="form-check-label" for="checkadmin">
+                                Audit Trails Page
+                            </label>
+                        </div>
+                        <br>
+                        <div class="card task-box">
+                            <div class="card-body">
+                                <div class="form-check font-size-16">
+                                    <input class="form-check-input" type="checkbox" value="" id="admincheck01">
+                                    <label class="form-check-label" for="admincheck01">
+                                        User Audit
+                                    </label>
+                                </div>
+                                <br>
+                                <div class="form-check font-size-16">
+                                    <input class="form-check-input" type="checkbox" value="" id="admincheck02">
+                                    <label class="form-check-label" for="admincheck02">
+                                        Alarm Audit
+                                    </label>
+                                </div>
+                                <br>
+                                <div class="form-check font-size-16">
+                                    <input class="form-check-input" type="checkbox" value="" id="admincheck03">
+                                    <label class="form-check-label" for="admincheck03">
+                                        SMS Audit
+                                    </label>
+                                </div>
+                                <br>
+                                <div class="form-check font-size-16">
+                                    <input class="form-check-input" type="checkbox" value="" id="admincheck04">
+                                    <label class="form-check-label" for="admincheck04">
+                                        Equipment Audit
+                                    </label>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="border rounded p-4">
+                        <div class="form-check font-size-16">
+                            <input class="form-check-input" type="checkbox" value="" id="checkmaster">
+                            <label class="form-check-label" for="checkmaster">
+                                Master Settings Page
+                            </label>
+                        </div>
+                        <br>
+                        <div class="card task-box">
+                            <div class="card-body">
+                                <div class="form-check font-size-16">
+                                    <input class="form-check-input" type="checkbox" value="" id="mastercheck01">
+                                    <label class="form-check-label" for="mastercheck01">
+                                        User Creation
+                                    </label>
+                                </div>
+                                <br>
+                                <div class="form-check font-size-16">
+                                    <input class="form-check-input" type="checkbox" value="" id="mastercheck02">
+                                    <label class="form-check-label" for="mastercheck02">
+                                        Group Security
+                                    </label>
+                                </div>
+                                <br>
+                                <div class="form-check font-size-16">
+                                    <input class="form-check-input" type="checkbox" value="" id="mastercheck03">
+                                    <label class="form-check-label" for="mastercheck03">
+                                        User Security
+                                    </label>
+                                </div>
+                                <br>
+                                <div class="form-check font-size-16">
+                                    <input class="form-check-input" type="checkbox" value="" id="mastercheck04">
+                                    <label class="form-check-label" for="mastercheck04">
+                                        Database Settings
+                                    </label>
+                                </div>
+                                <br>
+                                <div class="form-check font-size-16">
+                                    <input class="form-check-input" type="checkbox" value="" id="mastercheck05">
+                                    <label class="form-check-label" for="mastercheck05">
+                                        SMS Settings
+                                    </label>
+                                </div>
+                                <br>
+                                <div class="form-check font-size-16">
+                                    <input class="form-check-input" type="checkbox" value="" id="mastercheck06">
+                                    <label class="form-check-label" for="admincheck06">
+                                        Master Password Settings
+                                    </label>
+                                </div>
+                                <br>
+                                <div class="form-check font-size-16">
+                                    <input class="form-check-input" type="checkbox" value="" id="admincheck04">
+                                    <label class="form-check-label" for="admincheck04">
+                                        Database Settings
+                                    </label>
+                                </div>
+                                <br>
+                                <div class="form-check font-size-16">
+                                    <input class="form-check-input" type="checkbox" value="" id="admincheck05">
+                                    <label class="form-check-label" for="admincheck05">
+                                        SMS Settings
+                                    </label>
+                                </div>
+                                <br>
+                                <div class="form-check font-size-16">
+                                    <input class="form-check-input" type="checkbox" value="" id="admincheck06">
+                                    <label class="form-check-label" for="admincheck06">
+                                        Master Password Settings
+                                    </label>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="border rounded p-4">
+                        <div class="form-check font-size-16">
+                            <input class="form-check-input" type="checkbox" value="" id="checkadmin">
+                            <label class="form-check-label" for="checkadmin">
+                                History Page
+                            </label>
+                        </div>
+                        <br>
+                        <div class="card task-box">
+                            <div class="card-body">
+                                <div class="form-check font-size-16">
+                                    <input class="form-check-input" type="checkbox" value="" id="admincheck01">
+                                    <label class="form-check-label" for="admincheck01">
+                                        Data Report/Graph
+                                    </label>
+                                </div>
+                                <br>
+                                <div class="form-check font-size-16">
+                                    <input class="form-check-input" type="checkbox" value="" id="admincheck02">
+                                    <label class="form-check-label" for="admincheck02">
+                                        Lux UV Data View
+                                    </label>
+                                </div>
+                                <br>
+                                <div class="form-check font-size-16">
+                                    <input class="form-check-input" type="checkbox" value="" id="admincheck03">
+                                    <label class="form-check-label" for="admincheck03">
+                                        User Audit
+                                    </label>
+                                </div>
+                                <br>
+                                <div class="form-check font-size-16">
+                                    <input class="form-check-input" type="checkbox" value="" id="admincheck04">
+                                    <label class="form-check-label" for="admincheck04">
+                                        Alarm Audit
+                                    </label>
+                                </div>
+                                <br>
+                                <div class="form-check font-size-16">
+                                    <input class="form-check-input" type="checkbox" value="" id="admincheck05">
+                                    <label class="form-check-label" for="admincheck05">
+                                        SMS Audit
+                                    </label>
+                                </div>
+                                <br>
+                                <div class="form-check font-size-16">
+                                    <input class="form-check-input" type="checkbox" value="" id="admincheck06">
+                                    <label class="form-check-label" for="admincheck06">
+                                        Equipment Audit
+                                    </label>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="border rounded p-4">
+                        <div class="form-check font-size-16">
+                            <input class="form-check-input" type="checkbox" value="" id="checkadmin">
+                            <label class="form-check-label" for="checkadmin">
+                                Help Page
+                            </label>
+                        </div>
+                        <br>
+                        <div class="card task-box">
+                            <div class="card-body">
+                                <div class="form-check font-size-16">
+                                    <input class="form-check-input" type="checkbox" value="" id="admincheck01">
+                                    <label class="form-check-label" for="admincheck01">
+                                        About Us
+                                    </label>
+                                </div>
+                                <br>
+                                <div class="form-check font-size-16">
+                                    <input class="form-check-input" type="checkbox" value="" id="admincheck02">
+                                    <label class="form-check-label" for="admincheck02">
+                                        Help
+                                    </label>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

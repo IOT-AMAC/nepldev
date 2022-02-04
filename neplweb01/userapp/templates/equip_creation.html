@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="main-content">
+    <div class="page-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <form class="needs-validation" novalidate method="post" action="create_equipment">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="mb-4">
+                                            <label  class="form-label">Equipment Name</label>
+                                            <input class="form-control" type="text" name = "eqp_name">
+                                        </div>
+                                        <div class="mb-4">
+                                            <label  class="form-label">Type of Equipment</label>
+                                            <input class="form-control" type="text" name = "eqp_type">
+                                        </div>
+                                         <div class="mb-4">
+                                             <label class="form-label">No of Parameters</label>
+                                             <select class="form-select" name="param">
+                                                 <option>1</option>
+                                                 <option>2</option>
+                                             </select>
+                                         </div>
+                                         <div class="mb-4">
+                                             <label class="form-label">No of Sensors</label>
+                                             <select class="form-select" name="sensors">
+                                                 <option>1</option>
+                                                 <option>2</option>
+                                                 <option>3</option>
+                                                 <option>4</option>
+                                                 <option>5</option>
+                                                 <option>6</option>
+                                                 <option>7</option>
+                                                 <option>8</option>
+                                                 <option>9</option>
+                                                 <option>10</option>
+                                             </select>
+                                         </div>
+                                        <div class="mb-4">
+                                            <label  class="form-label">Data Log Intervals</label>
+                                            <input class="form-control" type="text" name = "log_inv">
+                                        </div>
+                                        <div class="mb-4">
+                                            <label  class="form-label">IP Address</label>
+                                            <div class="input-group">
+                                                <input name = "ip_addr1" type="text" class="form-control">
+                                                <input name = "ip_addr2" type="text" class="form-control">
+                                                <input name = "ip_addr3" type="text" class="form-control">
+                                                <input name = "ip_addr4" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label  class="form-label">Machine Code</label>
+                                            <input class="form-control" type="text" name = "mach_code">
+                                        </div>
+                                        <div class="mb-4">
+                                            <label  class="form-label">Comments</label>
+                                            <textarea class="form-control" name="comment" rows="3"></textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <button class="btn btn-primary waves-effect waves-light" type="submit">Save</button>
+                                            <button class="btn btn-primary waves-effect waves-light" type="submit">Clear</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
