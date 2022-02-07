@@ -14,7 +14,7 @@
                                 {% csrf_token %}
                                 <label class="form-label" >Group Name</label>
                                      <div class="input-group mb-4">
-                                          <select class="form-select" id="inputGroupSelect02">
+                                          <select class="form-select" name="group_select">
                                               <option selected>Select Group</option>
                                               <option>ADMIN</option>
                                               <option>SUPERVISOR</option>
@@ -320,6 +320,9 @@
                                                 </div>
                                                 <br>
                                             </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <button class="btn btn-primary waves-effect waves-light" type="submit">Save</button>
                                         </div>
                                     </div>
                                 </div>

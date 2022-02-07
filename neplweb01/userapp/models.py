@@ -33,6 +33,8 @@ class eqp_data(models.Model):
     data = models.CharField(max_length=5000)
 
 class admin_group(models.Model):
+    objects = models.Manager()
+    group_select = models.CharField(max_length=30)
     admin_page = models.BooleanField()
     supervise_page = models.BooleanField()
     audit_page = models.BooleanField()
@@ -41,6 +43,7 @@ class admin_group(models.Model):
     help_page = models.BooleanField()
 
 class supervise_group(models.Model):
+    objects = models.Manager()
     admin_page = models.BooleanField()
     supervise_page = models.BooleanField()
     audit_page = models.BooleanField()
@@ -49,6 +52,7 @@ class supervise_group(models.Model):
     help_page = models.BooleanField()
 
 class operator_group(models.Model):
+    objects = models.Manager()
     admin_page = models.BooleanField()
     supervise_page = models.BooleanField()
     audit_page = models.BooleanField()

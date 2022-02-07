@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import user_member, eqp_list, eqp_data
-from .forms import MemberForm, EqpCreation
+from .models import user_member, eqp_list, eqp_data, admin_group, supervise_group, operator_group
+from .forms import MemberForm, EqpCreation, AdminGroup, SuperviseGroup, OperatorGroup, EditUserForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -37,8 +37,8 @@ def home(request):
             if all_equip_data[i]["ip_addr"] == all_equip_list[j]["ip_addr"]:
                 try:
                     temp_data = ast.literal_eval(all_equip_data[i]['data'])["temperature"]
-                    print("temp_data")
-                    print(temp_data)
+                    #print("temp_data")
+                    #print(temp_data)
                     all_equip_list[j].update({"actual_temp":temp_data["actual_temp"]})
                     all_equip_list[j].update({"present_temp":temp_data["present_temp"]})
                     all_equip_list[j].update({"set_val":temp_data["set_val"]})
@@ -46,7 +46,7 @@ def home(request):
                 except:
                     print("errorrrrrrrrrrrrrrr")
 
-    print("all_equip_list  after adding", all_equip_list)
+    #print("all_equip_list  after adding", all_equip_list)
 
     all_members = user_member.objects.values()
 
@@ -91,26 +91,35 @@ def user_login(request):
 
 def register(request):
     if request.method == "POST":
+        f = request.POST['group_name']
+        print("dropdownnnnnn", f)
+        s = user_member.objects.get(u_name=f)
+        print("sssssssssss", s.u_name)
+        print("sssssssssss", s.pswd)
         form = MemberForm(request.POST or None)
+
         if form.is_valid():
             # print(form.data['u_name'])
             u_n = form.data['u_name']
             u_p = form.data['pswd']
             user = User.objects.create_user(u_n, None, u_p)
             form.save()
-    all_members = user_member.objects.values()
-    s = list(user_member.objects.values())
-    # print(s)
-    # r = s[1]["group_name"]
-    # print(r)
+        all_members = user_member.objects.values()
+        # r = s[1]["group_name"]
+        # print(r)
+        return render(request, 'auth-register.html', {'all': all_members,'s':s})
+    else:
+        all_members = user_member.objects.values()
+        return render(request, 'auth-register.html',{'all': all_members})
 
-    return render(request, 'auth-register.html', {'all': all_members,'s':s})
 
 def edit_user(request, name):
     if request.method == "POST":
-        form = EdituserForm(request.POST or None)
-        if form.is_valid():
-            form.save()
+        f = request.POST['group_name']
+        #print("dropdownnnnnn", f)
+        form = EditUserForm(request.POST or None)
+        #if form.is_valid():
+         #   form.save()
 
 
 def user_secur(request):
@@ -120,7 +129,28 @@ def user_secur(request):
 
 def group_secur(request):
     all_members = user_member.objects.values()
-    return render(request, 'group_sec.html', {'all': all_members})
+    if request.method == "POST":
+        form = AdminGroup(request.POST or None)
+        if(form.data["group_select"]=="ADMIN"):
+            if form.is_valid():
+                form.save()
+        if (form.data["group_select"] == "SUPERVISOR"):
+            f = SuperviseGroup(request.POST or None)
+            if f.is_valid():
+                f.save()
+        if (form.data["group_select"] == "OPERATOR"):
+            f = OperatorGroup(request.POST or None)
+            #print("operatorrrrrrrrrrrrrrrr", f)
+            if f.is_valid():
+                f.save()
+    a = admin_group.objects.values().last()
+    print("aaaaaaaaaaaaa",a)
+    s = supervise_group.objects.values().last()
+    print("sssssssssssss", s)
+    o = operator_group.objects.values().last()
+    print("oooooooooooooo", o)
+
+    return render(request, 'group_sec.html', {'all': all_members, 'a':a, 's':s, 'o':o})
 
 
 def equip_create(request):
@@ -154,7 +184,7 @@ def eqp_activ(request):
 
 def his_rep(request):
     all_members = user_member.objects.values()
-    return render(request, 'his_rep.html')
+    return render(request, 'his_rep.html', {'all': all_members})
 
 
 

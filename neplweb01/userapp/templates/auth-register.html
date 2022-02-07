@@ -116,37 +116,49 @@
                             </form>
                         </div>
                         <!-- Edit User -->
-                        <div class="collapse" id="edit_form">
-                            <form class="needs-validation" novalidate method="post" action="edit_user">
-                                {% csrf_token %}
+                        <div class="" id="edit_form">
                                 <div class="row">
                                     <div class="col-lg-6">
                                          <div>
                                              <label class="form-label" >User Name</label>
+                                             <form class="needs-validation" novalidate method="post">
+                                                 {% csrf_token %}
                                              <div class="input-group mb-4">
-                                                  <select class="form-select" id="inputGroupSelect02">
-                                                    <option selected>Select User</option>
+                                                  <select class="form-select"  name="group_name">
+                                                    <option selected disabled="true">Select User</option>
                                                       {% for item in all %}
                                                       <option>{{item.u_name}}</option>
                                                       {% endfor %}
                                                   </select>
+                                                 <input class="btn btn-primary waves-effect waves-light" type="submit">
+                                             </div>
+                                             </form>
+                                         </div>
+                                    </div>
+                                             <p></p>
+                                             <!--<p>{{s.1.u_name}}</p>-->
+                                    <form class="needs-validation" novalidate method="post" action="edit_user"></form>
+                                    <div class="col-lg-6">
+                                         <div>
+                                             <div class="mb-4">
+                                                 <label  class="form-label">User member</label>
+                                                 <input class="form-control" type="text" name = "pswd" value="{{ s.u_name }}">
                                              </div>
                                              <div class="mb-4">
                                                  <label  class="form-label">Password</label>
-                                                 <input class="form-control" type="Password" name = "pswd">
+                                                 <input class="form-control" type="Password" name = "pswd" value="{{ s.pswd }}">
                                              </div>
                                              <div class="mb-4">
                                                  <label  class="form-label">Password Change Duration(In days)</label>
-                                                 <input class="form-control" type="text" name="pswchdu" value="{{ item.u_name }}">
+                                                 <input class="form-control" type="text" name="pswchdu" value="{{ s.pswchdu }}">
                                              </div>
-                                             <button class="btn btn-primary waves-effect waves-light">{{s.u_name}}</button>
                                          </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="mt-3 mt-lg-0">
                                             <div class="mb-4">
                                                 <label class="form-label">Group Name</label>
-                                                <select class="form-select" name="group_name">
+                                                <select class="form-select" name="group_name" value="{{ s.group_name }}">
                                                     <option>Select</option>
                                                     <option>Admin</option>
                                                     <option>Supervisor</option>
@@ -157,7 +169,7 @@
                                         <div class="mt-3 mt-lg-0">
                                             <div class="mb-4">
                                                 <label class="form-label">Department Name</label>
-                                                <select class="form-select" name="dept_name">
+                                                <select class="form-select" name="dept_name" value="{{ s.dept_name }}">
                                                     <option>Select</option>
                                                     <option>Admin</option>
                                                     <option>Supervisor</option>
@@ -168,7 +180,7 @@
                                         <div class="mt-3 mt-lg-0">
                                             <div class="mb-4">
                                                 <label class="form-label">Status</label>
-                                                <select class="form-select" name="status">
+                                                <select class="form-select" name="status" value="{{ s.dept_name }}">
                                                     <option>Active</option>
                                                     <option>Inactive</option>
                                                 </select>
@@ -180,7 +192,6 @@
                                     <button class="btn btn-primary waves-effect waves-light" type="submit">Add</button>
                                     <button class="btn btn-primary waves-effect waves-light" type="submit">Clear</button>
                                 </div>
-                            </form>
                         </div>
                     </div>
                     <div>
