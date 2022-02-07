@@ -49,8 +49,11 @@ def home(request):
     #print("all_equip_list  after adding", all_equip_list)
 
     all_members = user_member.objects.values()
+    a = admin_group.objects.values().last()
+    s = supervise_group.objects.values().last()
+    o = operator_group.objects.values().last()
 
-    return render(request, 'index.html', {'all': all_members, 'allelist': all_equip_list})
+    return render(request, 'index.html', {'all': all_members, 'allelist': all_equip_list, 'a':a, 's':s, 'o':o})
 
 
 def on_connect(client, userdata, flags, rc):
@@ -93,9 +96,9 @@ def register(request):
     if request.method == "POST":
         f = request.POST['group_name']
         print("dropdownnnnnn", f)
-        s = user_member.objects.get(u_name=f)
-        print("sssssssssss", s.u_name)
-        print("sssssssssss", s.pswd)
+        #st = user_member.objects.get(u_name=f)
+        #print("sssssssssss", st.u_name)
+        #print("sssssssssss", st.pswd)
         form = MemberForm(request.POST or None)
 
         if form.is_valid():
@@ -105,56 +108,80 @@ def register(request):
             user = User.objects.create_user(u_n, None, u_p)
             form.save()
         all_members = user_member.objects.values()
+        a = admin_group.objects.values().last()
+        s = supervise_group.objects.values().last()
+        o = operator_group.objects.values().last()
         # r = s[1]["group_name"]
         # print(r)
-        return render(request, 'auth-register.html', {'all': all_members,'s':s})
+        return render(request, 'auth-register.html', {'all': all_members, 'a':a, 's':s, 'o':o})
     else:
         all_members = user_member.objects.values()
-        return render(request, 'auth-register.html',{'all': all_members})
+        a = admin_group.objects.values().last()
+        s = supervise_group.objects.values().last()
+        o = operator_group.objects.values().last()
+        return render(request, 'auth-register.html',{'all': all_members, 'a':a, 's':s, 'o':o})
 
 
-def edit_user(request, name):
+def edit_user(request):
     if request.method == "POST":
         f = request.POST['group_name']
+        print("fffffffff",f)
         #print("dropdownnnnnn", f)
+        #print("sssssssssss", s.u_name)
+        #print("sssssssssss", s.pswd)
         form = EditUserForm(request.POST or None)
-        #if form.is_valid():
-         #   form.save()
+        #s = user_member.objects.get(u_name=f)
+        print("formmmmmm",form.data["u_name"])
+        if form.is_valid():
+            print("hariiiiiiiiiiiiiiiiiiiiii")
+            user_member.objects.filter(u_name=form.data["u_name"]).update(u_name = form.data["u_name"], pswd = form.data["pswd"], pswchdu = form.data["pswchdu"],group_name = form.data["group_name"], dept_name = form.data["dept_name"], status = form.data["status"]  )
+            #form.save()
+    all_members = user_member.objects.values()
+    a = admin_group.objects.values().last()
+    s = supervise_group.objects.values().last()
+    o = operator_group.objects.values().last()
+    return render(request, 'auth-register.html', {'all': all_members, 'a':a, 's':s, 'o':o})
 
 
 def user_secur(request):
     all_members = user_member.objects.values()
-    return render(request, 'user_sec.html', {'all': all_members})
+    a = admin_group.objects.values().last()
+    s = supervise_group.objects.values().last()
+    o = operator_group.objects.values().last()
+    return render(request, 'user_sec.html', {'all': all_members, 'a':a, 's':s, 'o':o})
 
 
 def group_secur(request):
     all_members = user_member.objects.values()
     if request.method == "POST":
         form = AdminGroup(request.POST or None)
+        print("admingroup", form.data)
         if(form.data["group_select"]=="ADMIN"):
             if form.is_valid():
                 form.save()
         if (form.data["group_select"] == "SUPERVISOR"):
             f = SuperviseGroup(request.POST or None)
+            print("supervisegroup", f.data)
             if f.is_valid():
                 f.save()
         if (form.data["group_select"] == "OPERATOR"):
             f = OperatorGroup(request.POST or None)
-            #print("operatorrrrrrrrrrrrrrrr", f)
+            print("operatorrrrrrrrrrrrrrrr", f.data)
             if f.is_valid():
                 f.save()
     a = admin_group.objects.values().last()
-    print("aaaaaaaaaaaaa",a)
     s = supervise_group.objects.values().last()
-    print("sssssssssssss", s)
     o = operator_group.objects.values().last()
-    print("oooooooooooooo", o)
 
     return render(request, 'group_sec.html', {'all': all_members, 'a':a, 's':s, 'o':o})
 
 
 def equip_create(request):
     all_members = user_member.objects.values()
+    a = admin_group.objects.values().last()
+    s = supervise_group.objects.values().last()
+    o = operator_group.objects.values().last()
+
     if request.method == "POST":
         form = EqpCreation(request.POST or None)
         print(form.data)
@@ -171,20 +198,30 @@ def equip_create(request):
         else:
             print("Not save")
             print(form.errors)
-    return render(request, 'equip_creation.html', {'all': all_members})
+    return render(request, 'equip_creation.html', {'all': all_members, 'a':a, 's':s, 'o':o})
 
 def eqp_param(request):
     all_members = user_member.objects.values()
-    return render(request, 'eqp_param.html', {'all': all_members})
+    a = admin_group.objects.values().last()
+    s = supervise_group.objects.values().last()
+    o = operator_group.objects.values().last()
+
+    return render(request, 'eqp_param.html', {'all': all_members, 'a':a, 's':s, 'o':o})
 
 def eqp_activ(request):
     all_members = user_member.objects.values()
+    a = admin_group.objects.values().last()
+    s = supervise_group.objects.values().last()
+    o = operator_group.objects.values().last()
     all_equip = eqp_list.objects.values()
-    return render(request, 'eqp_activ.html', {'all': all_members, 'alle':all_equip})
+    return render(request, 'eqp_activ.html', {'all': all_members, 'alle':all_equip, 'a':a, 's':s, 'o':o})
 
 def his_rep(request):
     all_members = user_member.objects.values()
-    return render(request, 'his_rep.html', {'all': all_members})
+    a = admin_group.objects.values().last()
+    s = supervise_group.objects.values().last()
+    o = operator_group.objects.values().last()
+    return render(request, 'his_rep.html', {'all': all_members, 'a':a, 's':s, 'o':o})
 
 
 

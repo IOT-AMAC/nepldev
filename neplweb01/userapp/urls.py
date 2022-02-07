@@ -12,6 +12,7 @@ urlpatterns = [
     path('create_equipment', views.equip_create, name="Equipment Creation"),
     path('eqp_parameter', views.eqp_param, name='Equipment Parameter'),
     path('eqp_activation', views.eqp_activ, name='Equipment Activation Page'),
-    path('his_rep', views.his_rep, name='History Data Report')
+    path('his_rep', views.his_rep, name='History Data Report'),
+    path('edit_user', views.edit_user, name='Edit User')
 
 ]

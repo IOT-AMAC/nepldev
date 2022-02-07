@@ -137,12 +137,13 @@
                                     </div>
                                              <p></p>
                                              <!--<p>{{s.1.u_name}}</p>-->
-                                    <form class="needs-validation" novalidate method="post" action="edit_user"></form>
+                                    <form class="needs-validation" novalidate method="post" action="edit_user">
+                                        {% csrf_token %}
                                     <div class="col-lg-6">
                                          <div>
                                              <div class="mb-4">
                                                  <label  class="form-label">User member</label>
-                                                 <input class="form-control" type="text" name = "pswd" value="{{ s.u_name }}">
+                                                 <input class="form-control" type="text" name = "u_name" value="{{ s.u_name }}">
                                              </div>
                                              <div class="mb-4">
                                                  <label  class="form-label">Password</label>
@@ -187,11 +188,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+
                                 <div class="mb-3">
                                     <button class="btn btn-primary waves-effect waves-light" type="submit">Add</button>
                                     <button class="btn btn-primary waves-effect waves-light" type="submit">Clear</button>
                                 </div>
+
+                            </form>
+                           </div>
                         </div>
                     </div>
                     <div>
