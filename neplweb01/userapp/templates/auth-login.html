@@ -55,11 +55,11 @@
                                             </div>
 
                                             <div class="form-floating form-floating-custom mb-4 auth-pass-inputgroup">
-                                                <input type="password" class="form-control pe-5" name="password" placeholder="Enter Password" value="{{ password }}">
+                                                <input type="password" class="form-control pe-5" id = "password-input" name="password" placeholder="Enter Password" value="{{ password }}">
                                                 <button type="button" class="btn btn-link position-absolute h-100 end-0 top-0" id="password-addon">
                                                     <i class="mdi mdi-eye-outline font-size-18 text-muted"></i>
                                                 </button>
-                                                <label>Password</label>
+                                                <label for = "password-input">Password</label>
                                                 <div class="form-floating-icon">
                                                     <i data-feather="lock"></i>
                                                 </div>
@@ -80,11 +80,19 @@
                                                 <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Log In</button>
                                             </div>
                                         </form>
+                                        {% if messages %}
+                                            {% for message in messages %}
+                                                {% if message.tags == 'success' %}
+                                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                                        Username or Password are incorrect
+                                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                    </div>
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
 
-                                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                            Username or Password are incorrect
-                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                        </div>
+
+
                                     </div>
                                 </div>
                             </div>

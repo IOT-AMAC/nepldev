@@ -15,45 +15,50 @@ client = mqtt.Client()
 client.connect("broker.hivemq.com", 1883, 60)
 
 def home(request):
+    if request.user.is_authenticated:
+        client.on_connect = on_connect
+        client.on_message = on_message
+        client.loop_start()
 
-    client.on_connect = on_connect
-    client.on_message = on_message
-    client.loop_start()
+        all_equip_data = list(eqp_data.objects.values())
+        print("All_equip_data")
+        print(eqp_data.objects.values().last())
+        all_equip_list = list(eqp_list.objects.filter(eqp_status="Active").values())
+
+        # print("all_equip_list  ", all_equip_list)
+        # print(type(all_equip_list))
+        # print(type(all_equip_list[0]))
+        # print("all_equip_data   ", all_equip_data)
+        # print("temp_dataaaaaaaa")
+        temp_data = ast.literal_eval(all_equip_data[0]['data'])["temperature"]
+        # print(temp_data)
+
+        for i in range(0, len(all_equip_data)):
+            for j in range(0, len(all_equip_list)):
+                if all_equip_data[i]["ip_addr"] == all_equip_list[j]["ip_addr"]:
+                    try:
+                        temp_data = ast.literal_eval(all_equip_data[i]['data'])["temperature"]
+                        # print("temp_data")
+                        # print(temp_data)
+                        all_equip_list[j].update({"actual_temp": temp_data["actual_temp"]})
+                        all_equip_list[j].update({"present_temp": temp_data["present_temp"]})
+                        all_equip_list[j].update({"set_val": temp_data["set_val"]})
+                        all_equip_list[j].update({"conn_status": all_equip_data[i]["conn_status"]})
+                    except:
+                        print("errorrrrrrrrrrrrrrr")
+
+        # print("all_equip_list  after adding", all_equip_list)
+
+        all_members = user_member.objects.values()
+        a = admin_group.objects.values().last()
+        s = supervise_group.objects.values().last()
+        o = operator_group.objects.values().last()
+
+        return render(request, 'index.html', {'all': all_members, 'allelist': all_equip_list, 'a': a, 's': s, 'o': o})
+    else:
+        return redirect('/login')
 
 
-    all_equip_data = list(eqp_data.objects.values())
-    all_equip_list = list(eqp_list.objects.filter(eqp_status="Active").values())
-
-    #print("all_equip_list  ", all_equip_list)
-    #print(type(all_equip_list))
-    #print(type(all_equip_list[0]))
-    #print("all_equip_data   ", all_equip_data)
-    #print("temp_dataaaaaaaa")
-    temp_data = ast.literal_eval(all_equip_data[0]['data'])["temperature"]
-    #print(temp_data)
-
-    for i in range(0, len(all_equip_data)):
-        for j in range(0, len(all_equip_list)):
-            if all_equip_data[i]["ip_addr"] == all_equip_list[j]["ip_addr"]:
-                try:
-                    temp_data = ast.literal_eval(all_equip_data[i]['data'])["temperature"]
-                    #print("temp_data")
-                    #print(temp_data)
-                    all_equip_list[j].update({"actual_temp":temp_data["actual_temp"]})
-                    all_equip_list[j].update({"present_temp":temp_data["present_temp"]})
-                    all_equip_list[j].update({"set_val":temp_data["set_val"]})
-                    all_equip_list[j].update({"conn_status":all_equip_data[i]["conn_status"]})
-                except:
-                    print("errorrrrrrrrrrrrrrr")
-
-    #print("all_equip_list  after adding", all_equip_list)
-
-    all_members = user_member.objects.values()
-    a = admin_group.objects.values().last()
-    s = supervise_group.objects.values().last()
-    o = operator_group.objects.values().last()
-
-    return render(request, 'index.html', {'all': all_members, 'allelist': all_equip_list, 'a':a, 's':s, 'o':o})
 
 
 def on_connect(client, userdata, flags, rc):
@@ -86,6 +91,7 @@ def user_login(request):
             return redirect('/home')
         else:
             messages.success(request, 'Error logging in')
+            print("messages", messages)
             return render(request, 'auth-login.html')
     else:
 
