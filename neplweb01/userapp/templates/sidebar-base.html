@@ -1,0 +1,301 @@
+{% load static %}
+
+<!-- ========== Left Sidebar Start ========== -->
+<div class="vertical-menu">
+    <div data-simplebar class="h-100">
+        <div id="sidebar-menu">
+            <ul class="metismenu list-unstyled" id="side-menu">
+
+                {% for item in all %}
+                    {% if item.u_name == user.username %}
+                        {% if item.group_name == "Admin" %}
+                            <!-- Admin -->
+                            {% if a.admin_page == True %}
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow">
+                                    <i data-feather="users"></i>
+                                    <span data-key="t-ecommerce">Admin</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="register" data-key="t-products">User Management</a></li>
+                                    <li><a href="group_security" data-key="t-product-detail">Group Security</a></li>
+                                    <li><a href="user_security" data-key="t-orders">User Security</a></li>
+                                    <li><a href="#" data-key="t-customers">Database Settings</a></li>
+                                    <li><a href="#" data-key="t-cart">SMS Settings</a></li>
+                                    <li><a href="#" data-key="t-checkout">Master Password Settings</a></li>
+                                </ul>
+                            </li>
+                            {% endif %}
+                            {% if a.master_page == True %}
+                            <!-- Master Settings -->
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow">
+                                    <i data-feather="settings"></i>
+                                    <span data-key="t-ecommerce">Master Settings</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                <li><a href="create_equipment" data-key="t-products">Equipment Creation</a></li>
+                                <li><a href="eqp_parameter" data-key="t-product-detail">Equipment Parameter</a></li>
+                                <li><a href="eqp_activation" data-key="t-orders">Equipment Activation</a></li>
+                                <li><a href="#" data-key="t-customers">Template</a></li>
+                                <li><a href="#" data-key="t-cart">Mobile Number</a></li>
+                                <li><a href="#" data-key="t-checkout">Master Template</a></li>
+                                <li><a href="#" data-key="t-shops">Synchronize Date Time</a></li>
+                                <li><a href="#" data-key="t-add-product">Reset Lux UV</a></li>
+                                <li><a href="#" data-key="t-add-product">Input Output Status</a></li>
+                                </ul>
+                            </li>
+                            {% endif %}
+
+                            {% if a.supervise_page == True %}
+                            <!-- Supervise -->
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow">
+                                     <i data-feather="user-check"></i>
+                                    <span data-key="t-ecommerce">Supervise</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="#" data-key="t-products">Equipment List</a></li>
+                                    <li><a href="#" data-key="t-product-detail">Dat View</a></li>
+                                    <li><a href="#" data-key="t-orders">Lux Data View</a></li>
+                                </ul>
+                            </li>
+                            {% endif %}
+
+                            {% if a.audit_page == True %}
+                            <!-- Audit Trails -->
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow">
+                                     <i data-feather="user-check"></i>
+                                    <span data-key="t-ecommerce">Audit Trails</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="#" data-key="t-products">User Audit</a></li>
+                                    <li><a href="#" data-key="t-product-detail">Alarm Audit</a></li>
+                                    <li><a href="#" data-key="t-orders">SMS Audit</a></li>
+                                    <li><a href="#" data-key="t-orders">Equipment Audit</a></li>
+                                </ul>
+                            </li>
+                            {% endif %}
+                            {% if a.history_page == True %}
+                            <!-- History -->
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow">
+                                    <i data-feather="activity"></i>
+                                    <span data-key="t-ecommerce">History</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="his_rep" data-key="t-products">Data Report/Graph</a></li>
+                                    <li><a href="#" data-key="t-product-detail">Lux UV Data View</a></li>
+                                    <li><a href="#" data-key="t-orders">Lux Data View</a></li>
+                                </ul>
+                            </li>
+                            {% endif %}
+                            {% if a.help_page == True %}
+                            <!-- Help -->
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow">
+                                    <span data-key="t-ecommerce">Help</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="his_rep" data-key="t-products">About Us</a></li>
+                                    <li><a href="#" data-key="t-product-detail">Help</a></li>
+                                </ul>
+                            </li>
+                            {% endif %}
+                        {% endif %}
+                    {% if item.group_name == "Supervisor" %}
+                            <!-- Admin -->
+                            {% if s.admin_page == True %}
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow">
+                                    <i data-feather="users"></i>
+                                    <span data-key="t-ecommerce">Admin</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="register" data-key="t-products">User Management</a></li>
+                                    <li><a href="group_security" data-key="t-product-detail">Group Security</a></li>
+                                    <li><a href="user_security" data-key="t-orders">User Security</a></li>
+                                    <li><a href="#" data-key="t-customers">Database Settings</a></li>
+                                    <li><a href="#" data-key="t-cart">SMS Settings</a></li>
+                                    <li><a href="#" data-key="t-checkout">Master Password Settings</a></li>
+                                </ul>
+                            </li>
+                            {% endif %}
+                            {% if s.master_page == True %}
+                            <!-- Master Settings -->
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow">
+                                    <i data-feather="settings"></i>
+                                    <span data-key="t-ecommerce">Master Settings</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                <li><a href="create_equipment" data-key="t-products">Equipment Creation</a></li>
+                                <li><a href="eqp_parameter" data-key="t-product-detail">Equipment Parameter</a></li>
+                                <li><a href="eqp_activation" data-key="t-orders">Equipment Activation</a></li>
+                                <li><a href="#" data-key="t-customers">Template</a></li>
+                                <li><a href="#" data-key="t-cart">Mobile Number</a></li>
+                                <li><a href="#" data-key="t-checkout">Master Template</a></li>
+                                <li><a href="#" data-key="t-shops">Synchronize Date Time</a></li>
+                                <li><a href="#" data-key="t-add-product">Reset Lux UV</a></li>
+                                <li><a href="#" data-key="t-add-product">Input Output Status</a></li>
+                                </ul>
+                            </li>
+                            {% endif %}
+                            {% if s.supervise_page == True %}
+                            <!-- Supervise -->
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow">
+                                    <i data-feather="user-check"></i>
+                                    <span data-key="t-ecommerce">Supervise</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="#" data-key="t-products">Equipment List</a></li>
+                                    <li><a href="#" data-key="t-product-detail">Dat View</a></li>
+                                    <li><a href="#" data-key="t-orders">Lux Data View</a></li>
+                                </ul>
+                            </li>
+                            {% endif %}
+                            {% if s.audit_page == True %}
+                            <!-- Audit Trails -->
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow">
+                                     <i data-feather="user-check"></i>
+                                    <span data-key="t-ecommerce">Audit Trails</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="#" data-key="t-products">User Audit</a></li>
+                                    <li><a href="#" data-key="t-product-detail">Alarm Audit</a></li>
+                                    <li><a href="#" data-key="t-orders">SMS Audit</a></li>
+                                    <li><a href="#" data-key="t-orders">Equipment Audit</a></li>
+                                </ul>
+                            </li>
+                            {% endif %}
+                            {% if s.history_page == True %}
+                            <!-- History -->
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow">
+                                    <i data-feather="activity"></i>
+                                    <span data-key="t-ecommerce">History</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="his_rep" data-key="t-products">Data Report/Graph</a></li>
+                                    <li><a href="#" data-key="t-product-detail">Lux UV Data View</a></li>
+                                    <li><a href="#" data-key="t-orders">Lux Data View</a></li>
+                                </ul>
+                            </li>
+                            {% endif %}
+                            {% if s.help_page == True %}
+                            <!-- History -->
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow">
+                                    <span data-key="t-ecommerce">Help</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="his_rep" data-key="t-products">About Us</a></li>
+                                    <li><a href="#" data-key="t-product-detail">Help</a></li>
+                                </ul>
+                            </li>
+                            {% endif %}
+                        {% endif %}
+                    {% if item.group_name == "Operator" %}
+                            <!-- Admin -->
+                            {% if o.admin_page == True %}
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow">
+                                    <i data-feather="users"></i>
+                                    <span data-key="t-ecommerce">Admin</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="register" data-key="t-products">User Management</a></li>
+                                    <li><a href="group_security" data-key="t-product-detail">Group Security</a></li>
+                                    <li><a href="user_security" data-key="t-orders">User Security</a></li>
+                                    <li><a href="#" data-key="t-customers">Database Settings</a></li>
+                                    <li><a href="#" data-key="t-cart">SMS Settings</a></li>
+                                    <li><a href="#" data-key="t-checkout">Master Password Settings</a></li>
+                                </ul>
+                            </li>
+                            {% endif %}
+                            {% if o.master_page == True %}
+                            <!-- Master Settings -->
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow">
+                                    <i data-feather="settings"></i>
+                                    <span data-key="t-ecommerce">Master Settings</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                <li><a href="create_equipment" data-key="t-products">Equipment Creation</a></li>
+                                <li><a href="eqp_parameter" data-key="t-product-detail">Equipment Parameter</a></li>
+                                <li><a href="eqp_activation" data-key="t-orders">Equipment Activation</a></li>
+                                <li><a href="#" data-key="t-customers">Template</a></li>
+                                <li><a href="#" data-key="t-cart">Mobile Number</a></li>
+                                <li><a href="#" data-key="t-checkout">Master Template</a></li>
+                                <li><a href="#" data-key="t-shops">Synchronize Date Time</a></li>
+                                <li><a href="#" data-key="t-add-product">Reset Lux UV</a></li>
+                                <li><a href="#" data-key="t-add-product">Input Output Status</a></li>
+                                </ul>
+                            </li>
+                            {% endif %}
+                            {% if o.supervise_page == True %}
+                            <!-- Supervise -->
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow">
+                                    <i data-feather="user-check"></i>
+                                    <span data-key="t-ecommerce">Supervise</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="#" data-key="t-products">Equipment List</a></li>
+                                    <li><a href="#" data-key="t-product-detail">Dat View</a></li>
+                                    <li><a href="#" data-key="t-orders">Lux Data View</a></li>
+                                </ul>
+                            </li>
+                            {% endif %}
+                            {% if o.audit_page == True %}
+                            <!-- Audit Trails -->
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow">
+                                     <i data-feather="user-check"></i>
+                                    <span data-key="t-ecommerce">Audit Trails</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="#" data-key="t-products">User Audit</a></li>
+                                    <li><a href="#" data-key="t-product-detail">Alarm Audit</a></li>
+                                    <li><a href="#" data-key="t-orders">SMS Audit</a></li>
+                                    <li><a href="#" data-key="t-orders">Equipment Audit</a></li>
+                                </ul>
+                            </li>
+                            {% endif %}
+                            {% if o.history_page == True %}
+                            <!-- History -->
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow">
+                                    <i data-feather="activity"></i>
+                                    <span data-key="t-ecommerce">History</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="his_rep" data-key="t-products">Data Report/Graph</a></li>
+                                    <li><a href="#" data-key="t-product-detail">Lux UV Data View</a></li>
+                                    <li><a href="#" data-key="t-orders">Lux Data View</a></li>
+                                </ul>
+                            </li>
+                            {% endif %}
+                            {% if o.help_page == True %}
+                            <!-- History -->
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow">
+                                    <span data-key="t-ecommerce">Help</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="his_rep" data-key="t-products">About Us</a></li>
+                                    <li><a href="#" data-key="t-product-detail">Help</a></li>
+                                </ul>
+                            </li>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+
+            </ul>
+        </div>
+    </div>
+</div>
